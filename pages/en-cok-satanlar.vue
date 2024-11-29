@@ -1,7 +1,19 @@
 <template>
-    <div>
-      <h1>En Çok Satanlar</h1>
-      <p>Burada en çok satan ürünler listelenecek...</p>
-    </div>
+    <Tabs>
+      <template #default>
+       
+      </template>
+    </Tabs>
   </template>
+  
+  <script>
+  import Tabs from '@/components/Tabs.vue';
+  
+  export default {
+    name: "EnCokSatanlar",
+    components: {
+      Tabs,
+    }
+  };
+  </script>
   

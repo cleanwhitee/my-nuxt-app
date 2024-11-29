@@ -2,9 +2,9 @@
   <div class="page">
     <h1>Hoş Geldiniz!</h1>
     <p>Bu bir örnek sayfadır.</p>
- 
-     <!-- Sekmeler -->
-     <div class="tabs">
+    
+    <!-- Sekmeler -->
+    <div class="tabs">
       <span
         @click="activeTab = 'populer'"
         :class="{ active: activeTab === 'populer' }"
@@ -32,17 +32,14 @@
     <div v-if="activeTab === 'populer'" class="tab-content">
       <h2>En Popüler Ürünler</h2>
       <p>Burada en popüler ürünler listelenecek...</p>
-      <!-- Popüler ürünler içeriği -->
     </div>
     <div v-if="activeTab === 'yeniler'" class="tab-content">
       <h2>En Yeniler</h2>
       <p>Burada yeni gelen ürünler listelenecek...</p>
-      <!-- Yeniler içeriği -->
     </div>
     <div v-if="activeTab === 'coksatanlar'" class="tab-content">
       <h2>En Çok Satanlar</h2>
       <p>Burada en çok satan ürünler listelenecek...</p>
-      <!-- En çok satanlar içeriği -->
     </div>
 
     <!-- ScrollableRectangle bileşeni -->
@@ -52,9 +49,11 @@
     <ProductSlider :items="sliderItems" />
  
     <!-- Carousel Bileşeni -->
-    <Carousel  />
-
+    <Carousel />
     <Chatbox />
+    <Footer />
+    <Tabs />
+
   </div>
 </template>
 
@@ -64,93 +63,49 @@ import ScrollableRectangle from '~/components/ScrollableRectangle.vue';
 import ProductSlider from '~/components/ProductSlider.vue';
 import Carousel from '~/components/Carousel.vue';
 import Chatbox from '~/components/Chatbox.vue';
+import Footer from '~/components/Footer.vue';
+import Tabs from '~/components/Tabs.vue';
 
 const rectangleItems = [
-  {
-    imgSrc: "/images/maskara.jpg",  // Resim yolu
-  },
-  {
-    imgSrc: "/images/fondöten.jpg",  // Resim yolu
-  },
-  {
-    imgSrc: "/images/maskara.jpg",  // Resim yolu
-  },
-  {
-    imgSrc: "/images/fondöten.jpg",  // Resim yolu
-  },
-  {
-    imgSrc: "/images/maskara.jpg",  // Resim yolu
-  },
-  {
-    imgSrc: "/images/fondöten.jpg",  // Resim yolu
-  },
-  {
-    imgSrc: "/images/maskara.jpg",  // Resim yolu
-  },
-  {
-    imgSrc: "/images/fondöten.jpg",  // Resim yolu
-  },
-  {
-    imgSrc: "/images/maskara.jpg",  // Resim yolu
-  },
-  {
-    imgSrc: "/images/fondöten.jpg",  // Resim yolu
-  }
-  // Diğer öğeleri buraya ekleyebilirsiniz...
+  { imgSrc: "/images/maskara.jpg", text: "Maskara" },
+  { imgSrc: "/images/fondöten.jpg", text: "Fondöten" },
+  { imgSrc: "/images/maskara.jpg", text: "Maskara" },
+  { imgSrc: "/images/fondöten.jpg", text: "Fondöten" },
+  { imgSrc: "/images/maskara.jpg", text: "Maskara" },
+  { imgSrc: "/images/fondöten.jpg", text: "Fondöten" },
+  { imgSrc: "/images/maskara.jpg", text: "Maskara" },
+  { imgSrc: "/images/fondöten.jpg", text: "Fondöten" }
 ];
-
 
 const sliderItems = [
-  {
-    imgSrc: "/images/slider1.png",  // Slider resim yolu
-  
-  },
-  {
-    imgSrc: "/images/slider2.png",  // Slider resim yolu
+  { imgSrc: "/images/slider1.png" },
+  { imgSrc: "/images/slider2.png" },
+  { imgSrc: "/images/slider3.png" },
+  { imgSrc: "/images/slider4.png" },
+  { imgSrc: "/images/slider5.png" }
 
-  },
-  {
-    imgSrc: "/images/slider3.png",  // Slider resim yolu
-   
-  },
-  {
-    imgSrc: "/images/slider4.png",  // Slider resim yolu
-   
-  },
-  {
-    imgSrc: "/images/slider5.png",  // Slider resim yolu
-   
-  }
 ];
 
-// Sekme yönetimi
-const activeTab = ref('populer'); // Varsayılan olarak 'En Popüler' sekmesi aktif
+const activeTab = ref('populer');
 </script>
 
 <style scoped>
-.page {
-  text-align: center;
-}
-
 .page {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   padding: 10px;
-}
-
-.main-content {
   text-align: center;
-  padding: 20px;
 }
 
 h1 {
   font-size: 40px;
+  margin-bottom: 20px;
 }
 
 .tabs {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Sekmeleri yatayda ortalar */
   margin-top: 20px;
 }
 
@@ -159,12 +114,18 @@ h1 {
   padding: 10px 20px;
   cursor: pointer;
   margin-right: 30px;
+  transition: all 0.3s ease; /* Geçiş animasyonu */
+}
+
+.tab:hover {
+  color: #d14b88; /* Sekme üzerine gelindiğinde renk değişimi */
+  font-size: 22px; /* Font büyütme */
 }
 
 .tab.active {
   font-weight: bold;
   color: #d14b88; /* Aktif sekme için renk */
-  border-bottom: 2px solid #d14b88; /* Alt çizgi */
+  border-bottom: 2px solid #d14b88; /* Aktif sekme alt çizgi */
 }
 
 .tab-content {
