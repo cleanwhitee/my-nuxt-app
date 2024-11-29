@@ -53,6 +53,8 @@
  
     <!-- Carousel Bileşeni -->
     <Carousel  />
+
+    <Chatbox />
   </div>
 </template>
 
@@ -61,6 +63,7 @@ import { ref } from 'vue';
 import ScrollableRectangle from '~/components/ScrollableRectangle.vue';
 import ProductSlider from '~/components/ProductSlider.vue';
 import Carousel from '~/components/Carousel.vue';
+import Chatbox from '~/components/Chatbox.vue';
 
 const rectangleItems = [
   {
